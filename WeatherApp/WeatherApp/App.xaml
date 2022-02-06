@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeatherApp.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="BlueColor">#1a66b1</Color>
+            <Color x:Key="WhiteColor">White</Color>
+            <Color x:Key="LightGray">#aca8a8</Color>
+            <Color x:Key="BlackColor">Black</Color>
+
+            <Style TargetType="Label"
+                   x:Key="SelectedStyle">
+                <Setter Property="TextColor"
+                        Value="{StaticResource WhiteColor}" />
+            </Style>
+            <Style TargetType="Label"
+                   x:Key="UnSelectedStyle">
+                <Setter Property="TextColor"
+                        Value="{StaticResource BlackColor}" />
+            </Style>
+            <Style TargetType="Frame"
+                   x:Key="FrameSelectedStyle">
+                <Setter Property="BackgroundColor"
+                        Value="{StaticResource BlueColor}" />
+            </Style>
+            <Style TargetType="Frame"
+                   x:Key="FrameUnSelectedStyle">
+                <Setter Property="BackgroundColor"
+                        Value="{StaticResource WhiteColor}" />
+            </Style>
+
+            <Style TargetType="Label"
+                   x:Key="SmallBoldText">
+                <Setter Property="TextColor"
+                        Value="{StaticResource BlueColor}" />
+                <Setter Property="FontSize"
+                        Value="12" />
+                <Setter Property="FontAttributes"
+                        Value="Bold" />
+                <Setter Property="HorizontalOptions"
+                        Value="Center" />
+            </Style>
+
+            <Style TargetType="Label"
+                   x:Key="SmallDefaultText">
+                <Setter Property="TextColor"
+                        Value="{StaticResource BlackColor}" />
+                <Setter Property="FontSize"
+                        Value="10" />
+                <Setter Property="FontAttributes"
+                        Value="None" />
+                <Setter Property="HorizontalOptions"
+                        Value="Center" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

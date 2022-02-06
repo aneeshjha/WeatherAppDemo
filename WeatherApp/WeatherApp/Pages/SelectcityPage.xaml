@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="WeatherApp.Pages.SelectcityPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             BackgroundColor="WhiteSmoke">
+    <ContentPage.Content>
+        <Grid RowSpacing="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{OnPlatform UWP='2*',Android='*',iOS='*'}" />
+                <RowDefinition Height="{OnPlatform UWP='8*',Android='9*',iOS='9*'}" />
+            </Grid.RowDefinitions>
+            
+            <!--Heading-->
+            <Grid BackgroundColor="{StaticResource BlueColor}">
+                <Label Text="Select City"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       TextColor="White"
+                       FontSize="Title"
+                       FontAttributes="Bold" />
+            </Grid>
+            
+            <!--List of Cities-->
+            <ListView Grid.Row="1"
+                      Margin="15"
+                      SeparatorVisibility="None"
+                      ItemsSource="{Binding cityDetails}"
+                      x:Name="cityCard"
+                      BackgroundColor="Transparent"
+                      SelectionMode="None"
+                      HasUnevenRows="True"
+                      CachingStrategy="RecycleElement">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame Padding="15"
+                                   BorderColor="{StaticResource LightGray}"
+                                   CornerRadius="6"
+                                   Margin="0,0,0,15">
+                                <Grid ColumnSpacing="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="6*" />
+                                        <ColumnDefinition Width="2*" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="2*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Row="0"
+                                           Grid.RowSpan="2"
+                                           Grid.Column="0"
+                                           TextColor="{StaticResource BlueColor}"
+                                           FontSize="Medium"
+                                           FontAttributes="Bold"
+                                           Text="{Binding CityName}"
+                                           VerticalOptions="Center" />
+                                    <Label Grid.Row="0"
+                                           Grid.Column="1"
+                                           Text="Lat"
+                                           Style="{StaticResource SmallBoldText}"
+                                           VerticalOptions="Start" />
+                                    <Label Grid.Row="0"
+                                           Grid.Column="3"
+                                           Text="Long"
+                                           Style="{StaticResource SmallBoldText}"
+                                           VerticalOptions="Start" />
+                                    <BoxView Grid.Row="0"
+                                             Grid.RowSpan="2"
+                                             Grid.Column="2"
+                                             WidthRequest="1"
+                                             VerticalOptions="FillAndExpand"
+                                             BackgroundColor="{StaticResource LightGray}" />
+                                    <Label Grid.Row="1"
+                                           Grid.Column="1"
+                                           Text="{Binding Lat,StringFormat='{0} °N'}"
+                                           Style="{StaticResource SmallDefaultText}"
+                                           VerticalOptions="Start" />
+                                    <Label Grid.Row="1"
+                                           Grid.Column="3"
+                                           Text="{Binding Lat,StringFormat='{0} °E'}"
+                                           Style="{StaticResource SmallDefaultText}"
+                                           VerticalOptions="Start" />
+                                </Grid>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.CitySelectedCommand ,Source={x:Reference cityCard}}"
+                                                          CommandParameter="{Binding}" />
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
